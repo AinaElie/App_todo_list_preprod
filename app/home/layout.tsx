@@ -1,3 +1,4 @@
+import { SessionProvider } from "next-auth/react";
 import NavBar from "../components/NavBar";
 
 export default function RootLayout({
@@ -8,7 +9,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <NavBar />
+        <SessionProvider>
+          <NavBar />
+        </SessionProvider>
         {children}
       </body>
     </html>
