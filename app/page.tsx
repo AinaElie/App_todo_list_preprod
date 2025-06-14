@@ -30,7 +30,7 @@ export default function Home() {
           ) : (
             <Link
               onClick={() => setLoading(true)}
-              href={"/"}
+              href={"/login"}
               className="bg-black transition-all text-white font-light text-sm px-4 py-2 border border-black rounded-md hover:bg-transparent hover:text-black"
             >
               Connexion
