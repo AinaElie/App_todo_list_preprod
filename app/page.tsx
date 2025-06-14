@@ -12,7 +12,7 @@ export default function Home() {
     <div className="w-full h-screen flex justify-center items-center">
       <div className="w-1/2 flex flex-col justify-center items-center">
         <Image
-          src="/logo.jfif"
+          src="/logo.png"
           alt="Logo"
           width={60}
           height={60}
