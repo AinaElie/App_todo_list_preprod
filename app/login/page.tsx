@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 import { useState } from "react";
 import Loading from "./loading";
 
-export default function page() {
+export default function Page() {
   const [isLoading, setLoading] = useState(false);
 
   const OnClickAuth = async () => {
