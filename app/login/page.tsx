@@ -10,6 +10,9 @@ export default function Page() {
   const OnClickAuth = async () => {
     setLoading(true);
     await signIn("github", { redirectTo: "/home" });
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
   };
 
   return (
