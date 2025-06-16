@@ -7,7 +7,7 @@ export default function NavBar() {
   const { data: session } = useSession();
 
   return (
-    <nav className="w-11/12 ml-12 flex justify-between items-center top-2 fixed shadow-lg shadow-stone-400 py-2 rounded-lg">
+    <nav className="w-11/12 ml-14 flex justify-between items-center top-2 fixed shadow-lg shadow-stone-400 py-2 rounded-lg">
       <div className="flex justify-center items-center pl-4">
         <Image src="/logo.png" alt="Logo" width={50} height={50} />
         <p className="text-2xl font-bold text-black">Todo App</p>
