@@ -10,7 +10,7 @@ export default function NavBar() {
     <nav className="w-11/12 ml-12 flex justify-between items-center top-2 fixed shadow-lg shadow-stone-400 py-2 rounded-lg">
       <div className="flex justify-center items-center pl-4">
         <Image src="/logo.png" alt="Logo" width={50} height={50} />
-        <p className="text-2xl font-bold text-black">Todo List</p>
+        <p className="text-2xl font-bold text-black">Todo App</p>
       </div>
       <div className="flex justify-center items-center pr-8 cursor-pointer">
         <div className="border border-black rounded-full overflow-hidden">
