@@ -1,5 +1,5 @@
 export default function Page() {
   return (
-    <div>page</div>
+    <div className="w-full h-screen flex justify-center items-center">Schedule</div>
   )
 }

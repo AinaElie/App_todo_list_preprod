@@ -1,5 +1,5 @@
 export default function Page() {
   return (
-    <div>AddTask</div>
+    <div className="w-full h-screen flex justify-center items-center">AddTask</div>
   )
 }
