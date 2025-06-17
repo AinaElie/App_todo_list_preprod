@@ -7,7 +7,7 @@ export default function Page() {
   const session = useSession();
   const router = useRouter();
 
-  if (session.status != "authenticated") return router.push("/login")
+  if (session.status == "unauthenticated") return router.push("/login")
 
   return (
     <div className="w-full h-screen flex justify-center items-center">
