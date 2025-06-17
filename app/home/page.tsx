@@ -1,9 +1,13 @@
-import { auth } from "@/auth";
+"use client"
 
-export default async function Page() {
-  const session = await auth();
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-  if (!session?.user) return <div>User not found</div>
+export default function Page() {
+  const session = useSession();
+  const router = useRouter();
+
+  if (session.status != "authenticated") return router.push("/login")
 
   return (
     <div className="w-full h-screen flex justify-center items-center">
