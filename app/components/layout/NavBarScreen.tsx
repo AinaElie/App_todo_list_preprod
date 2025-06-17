@@ -12,12 +12,12 @@ export default function NavBarScreen({
   data: Session | null;
 }) {
   return (
-    <nav className="w-11/12 ml-14 flex justify-between items-center top-2 fixed shadow-lg shadow-stone-400 py-2 rounded-lg">
+    <nav className="w-11/12 z-10 ml-14 flex justify-between items-center top-2 fixed shadow-lg shadow-stone-400 py-2 rounded-lg">
       <div className="flex justify-center items-center pl-4">
         <Image src="/logo.png" alt="Logo" width={50} height={50} />
         <p className="text-2xl font-bold text-black">Todo App</p>
       </div>
-      <div className="flex justify-center items-center pr-8 cursor-pointer">
+      <div className="flex justify-center items-start pr-8 cursor-pointer">
         <div className="border border-black rounded-full overflow-hidden">
           <div className="w-14 h-14 flex justify-center items-center">
             {(data?.user?.image && (
@@ -47,8 +47,15 @@ export default function NavBarScreen({
             )}
           </div>
         </div>
-        <div className="flex flex-col text-left pl-4">
-          <p className="font-bold text-lg">{data?.user?.name}</p>
+        <div className="flex flex-col justify-center items-start pl-8">
+          {isConnected == true ? (
+            <p className="text-sm text-left">
+              Hi, <span className="font-bold text-lg">{data?.user?.name}</span>
+            </p>
+          ) : (
+            <p className="text-sm text-left">User not found</p>
+          )}
+
           {isConnected == true ? (
             <div className="flex justify-center items-center border border-green-500 rounded-lg py-0.5 px-2">
               <svg
@@ -90,7 +97,7 @@ export default function NavBarScreen({
         </div>
         <button
           onClick={() => signOut()}
-          className="cursor-pointer relative group w-10 flex justify-center items-center ml-8 p-2 rounded-lg hover:bg-stone-200"
+          className="cursor-pointer border transition-all bg-red-700 border-red-700 mt-3 relative group w-10 flex justify-center items-center ml-8 p-2 rounded-lg hover:bg-white"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -101,15 +108,15 @@ export default function NavBarScreen({
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
-            className="stroke-red-700"
+            className="stroke-white group-hover:stroke-red-700"
           >
             <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
             <polyline points="16 17 21 12 16 7"></polyline>
             <line x1="21" x2="9" y1="12" y2="12"></line>
           </svg>
-          <div className="absolute top-5 flex-col items-center hidden mt-6 group-hover:flex">
-            <div className="w-4 h-4 -mb-2 rotate-45 bg-stone-200"></div>
-            <p className="z-10 py-2 px-8 text-xs bg-stone-200 shadow-lg">
+          <div className="absolute transition-all top-5 flex-col rounded-lg justify-around items-center hidden mt-6 group-hover:flex">
+            <div className="w-4 h-4 -mb-2 rotate-45 bg-stone-100"></div>
+            <p className="z-10 w-20 py-2 text-xs bg-stone-100 shadow-lg">
               Log Out
             </p>
           </div>
