@@ -47,10 +47,10 @@ export default function NavBarScreen({
                 height="24"
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#000000"
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
+                className="stroke-white"
               >
                 <circle cx="12" cy="12" r="10"></circle>
                 <circle cx="12" cy="10" r="3"></circle>
