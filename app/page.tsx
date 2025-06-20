@@ -34,7 +34,6 @@ export default function Home() {
                 href={"/login"}
                 className="bg-black group flex justify-center items-center transition-all text-white font-light text-sm mr-4 px-4 py-3 border border-black rounded-md hover:bg-white"
               >
-                <p className="group-hover:text-black">Connexion</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="23"
@@ -44,12 +43,13 @@ export default function Home() {
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  className="stroke-white ml-4 group-hover:stroke-black"
+                  className="stroke-white group-hover:stroke-black"
                 >
                   <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
                   <polyline points="10 17 15 12 10 7"></polyline>
                   <line x1="15" x2="3" y1="12" y2="12"></line>
                 </svg>
+                <p className="group-hover:text-black pl-4">Connexion</p>
               </Link>
               <Link
                 onClick={() => setLoading(true)}

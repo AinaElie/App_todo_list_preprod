@@ -17,8 +17,8 @@ export default function NavBarScreen({
         <Image src="/logo.png" alt="Logo" width={50} height={50} />
         <p className="text-2xl font-bold text-black">Todo App</p>
       </div>
-      <div className="flex justify-center items-start pr-8 cursor-pointer">
-        <div className="border border-black rounded-full overflow-hidden">
+      <div className="flex justify-center items-start pr-8">
+        <div className="border border-black rounded-full flex justify-center items-center cursor-pointer">
           <div className="w-14 h-14 flex justify-center items-center">
             {(data?.user?.image && (
               <Image
@@ -48,15 +48,14 @@ export default function NavBarScreen({
           </div>
         </div>
         <div className="flex flex-col justify-center items-start pl-8">
-          {isConnected == true ? (
-            <p className="text-sm text-left">
-              Hi, <span className="font-bold text-lg">{data?.user?.name}</span>
-            </p>
-          ) : (
-            <p className="text-sm text-left">User not found</p>
-          )}
+          <p className="text-sm text-left">
+            Hi,{" "}
+            <span className="font-bold text-lg">
+              {data?.user?.name || "..."}
+            </span>
+          </p>
 
-          {isConnected == true ? (
+          {isConnected ? (
             <div className="flex justify-center items-center border border-green-500 rounded-lg py-0.5 px-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -114,9 +113,9 @@ export default function NavBarScreen({
             <polyline points="16 17 21 12 16 7"></polyline>
             <line x1="21" x2="9" y1="12" y2="12"></line>
           </svg>
-          <div className="absolute transition-all top-5 flex-col rounded-lg justify-around items-center hidden mt-6 group-hover:flex">
-            <div className="w-4 h-4 -mb-2 rotate-45 bg-stone-100"></div>
-            <p className="z-10 w-20 py-2 text-xs bg-stone-100 shadow-lg">
+          <div className="absolute transition-all top-5 flex-col justify-around items-center hidden mt-6 group-hover:flex">
+            <div className="w-4 h-4 -mb-2 rotate-45 bg-white"></div>
+            <p className="z-10 w-20 py-2 text-xs bg-white shadow-lg border rounded-lg">
               Log Out
             </p>
           </div>
