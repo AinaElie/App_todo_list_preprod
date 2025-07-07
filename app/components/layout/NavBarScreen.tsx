@@ -12,8 +12,13 @@ export default function NavBarScreen({
   isConnected: boolean;
   data: Session | null;
 }) {
+
+  const handleSignOut = async () => {
+    await signOut({ callbackUrl: "/login" });
+  }
+
   return (
-    <nav className="w-11/12 z-10 ml-14 flex justify-between items-center top-2 fixed shadow-lg shadow-stone-400 py-2 rounded-lg ring-1 ring-black/5">
+    <nav className="w-11/12 z-10 ml-14 flex justify-between items-center top-2 fixed shadow-lg shadow-stone-400 py-2 rounded-lg ring-1 ring-black/5 bg-white">
       <div className="flex justify-center items-center pl-4">
         <Image src="/logo.png" alt="Logo" width={50} height={50} />
         <p className="text-2xl font-bold text-black">Todo App</p>
@@ -119,7 +124,7 @@ export default function NavBarScreen({
             </MenuItem> */}
             <MenuItem>
               <a
-                onClick={() => signOut()}
+                onClick={handleSignOut}
                 href="#"
                 className="flex justify-start items-center px-4 py-2 text-sm mx-2 group rounded-lg data-focus:bg-transparent data-focus:outline-hidden bg-red-500 border border-red-500"
               >

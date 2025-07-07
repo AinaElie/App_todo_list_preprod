@@ -9,7 +9,7 @@ export default function SideBar() {
   return (
     <Menu
       as={"div"}
-      className="shadow-xl z-10 flex flex-col justify-center items-center group hover:w-1/5 hover:cursor-pointer w-14 shadow-stone-400 fixed left-8 top-40 overflow-hidden py-8 rounded-lg transition-all ring-1 ring-black/5"
+      className="shadow-xl z-10 flex flex-col justify-center items-center group hover:w-1/5 hover:cursor-pointer w-14 shadow-stone-400 fixed left-8 top-40 overflow-hidden py-8 rounded-lg transition-all ring-1 ring-black/5 bg-white"
     >
       <MenuItem
         as={"button"}
