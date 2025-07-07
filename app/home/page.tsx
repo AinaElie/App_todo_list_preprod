@@ -11,7 +11,7 @@ export default function Page() {
 
   return (
     <div className="w-full h-screen flex justify-center items-center">
-      TODO: App TodoList
+      <h1 className="text-5xl">...</h1>
     </div>
   );
 }
