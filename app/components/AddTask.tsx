@@ -106,7 +106,7 @@ export default function AddTask() {
       <div className="ml-4 py-4 h-full w-full flex flex-wrap gap-2">
         {tasks.length != 0
           ? tasks.map((task) => (
-              <div className="border border-stone-400 w-1/2 p-4 rounded-lg shadow-lg shadow-stone-400 focus:shadow-md">
+              <div key={task.date_create.toISOString()} className="border border-stone-400 w-1/2 p-4 rounded-lg shadow-lg shadow-stone-400 focus:shadow-md">
                 <p>{task.content}</p>
                 <div className="flex justify-between items-center">
                   <ChipsTask taskType={task.type} />
