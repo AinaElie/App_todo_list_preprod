@@ -13,13 +13,13 @@ export default function NavBarScreen({
   data: Session | null;
 }) {
   return (
-    <nav className="w-11/12 z-10 ml-14 flex justify-between items-center top-2 fixed shadow-lg shadow-stone-400 py-2 rounded-lg">
+    <nav className="w-11/12 z-10 ml-14 flex justify-between items-center top-2 fixed shadow-lg shadow-stone-400 py-2 rounded-lg ring-1 ring-black/5">
       <div className="flex justify-center items-center pl-4">
         <Image src="/logo.png" alt="Logo" width={50} height={50} />
         <p className="text-2xl font-bold text-black">Todo App</p>
       </div>
       <div className="flex justify-center items-center pr-8">
-        <div className={`rounded-full flex justify-center items-center cursor-pointer ${isConnected == true ? "bg-green-300" : "bg-red-500"} mr-8`}>
+        <div className={`rounded-full flex justify-center items-center cursor-pointer ${isConnected ? "bg-green-300" : "bg-red-500"} mr-8`}>
           <div className="w-14 h-14 flex justify-center items-center">
             {(data?.user?.image && (
               <>

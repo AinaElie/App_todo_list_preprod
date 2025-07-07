@@ -1,13 +1,18 @@
 "use client";
 
+import { Menu, MenuItem } from "@headlessui/react";
 import { useRouter } from "next/navigation";
 
 export default function SideBar() {
   const router = useRouter();
 
   return (
-    <div className="shadow-xl z-10 flex flex-col justify-center items-center group hover:w-1/5 hover:cursor-pointer w-14 shadow-stone-400 fixed left-8 top-40 overflow-hidden py-8 rounded-lg transition-all">
-      <button
+    <Menu
+      as={"div"}
+      className="shadow-xl z-10 flex flex-col justify-center items-center group hover:w-1/5 hover:cursor-pointer w-14 shadow-stone-400 fixed left-8 top-40 overflow-hidden py-8 rounded-lg transition-all ring-1 ring-black/5"
+    >
+      <MenuItem
+        as={"button"}
         onClick={() => router.push("/home/addTask")}
         className="flex justify-start items-center w-11/12 h-14 hover:bg-stone-200 py-3 rounded-lg cursor-pointer relative"
       >
@@ -29,8 +34,9 @@ export default function SideBar() {
         <p className="group-hover:text-black pl-20 text-transparent transition-all">
           Add new task
         </p>
-      </button>
-      <button
+      </MenuItem>
+      <MenuItem
+        as={"button"}
         onClick={() => router.push("/home/list")}
         className="flex justify-start items-center w-11/12 h-14 hover:bg-stone-200 py-3 rounded-lg cursor-pointer relative"
       >
@@ -55,8 +61,9 @@ export default function SideBar() {
         <p className="group-hover:text-black pl-20 text-transparent transition-all">
           My Todo list
         </p>
-      </button>
-      <button
+      </MenuItem>
+      <MenuItem
+        as={"button"}
         onClick={() => router.push("/home/schedule")}
         className="flex justify-start items-center w-11/12 h-14 hover:bg-stone-200 py-3 rounded-lg cursor-pointer relative"
       >
@@ -81,7 +88,7 @@ export default function SideBar() {
         <p className="group-hover:text-black pl-20 text-transparent transition-all">
           My Schedule
         </p>
-      </button>
-    </div>
+      </MenuItem>
+    </Menu>
   );
 }
