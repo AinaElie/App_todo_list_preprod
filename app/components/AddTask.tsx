@@ -103,12 +103,15 @@ export default function AddTask() {
           </button>
         </div>
       </form>
-      <div className="ml-4 py-4 h-full w-full flex flex-wrap gap-2">
+      <div className="ml-8 py-4 px-8 h-full w-full flex flex-wrap gap-8">
         {tasks.length != 0
           ? tasks.map((task) => (
-              <div key={task.date_create.toISOString()} className="border border-stone-400 w-1/2 p-4 rounded-lg shadow-lg shadow-stone-400 focus:shadow-md">
-                <p>{task.content}</p>
-                <div className="flex justify-between items-center">
+              <div
+                key={task.date_create.toISOString()}
+                className="relative flex flex-col justify-between border border-stone-400 p-4 rounded-lg shadow-lg shadow-stone-400 focus:shadow-md min-h-[400px] max-h-[400px] max-w-[400px]"
+              >
+                <p className="w-full h-4/5 overflow-hidden">{task.content}</p>
+                <div className="flex justify-between items-center bg-white">
                   <ChipsTask taskType={task.type} />
                   <p className="border border-zinc-400 px-4 py-2 rounded-2xl text-zinc-400">
                     {new Date(task.date_create).toLocaleDateString()}
