@@ -10,31 +10,37 @@ export enum TaskType {
   Low = "Low",
 }
 
-interface Task {
+export interface Task {
+  id: string;
   content: string;
   type: TaskType;
   date_create: Date;
 }
 
-interface TaskState {
+export interface TaskState {
   tasks: Task[];
   addTask: (task: Task) => void;
+  removeTask: (id: string) => void;
 }
 
-const useTaskStore = create<TaskState>((set) => ({
+export const useTaskStore = create<TaskState>((set) => ({
   tasks: [],
   addTask: (task: Task) => set((state) => ({ tasks: [...state.tasks, task] })),
+  removeTask: (id: string) =>
+    set((state) => ({ tasks: [...state.tasks.filter((e) => e.id != id)] })),
 }));
 
 export default function AddTask() {
   const [text, setText] = useState("");
   const [degree, setDegree] = useState(TaskType.Low);
   const addTask = useTaskStore((state) => state.addTask);
+  const removeTask = useTaskStore((state) => state.removeTask);
   const tasks = useTaskStore((state) => state.tasks);
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     const newTask: Task = {
+      id: crypto.randomUUID(),
       content: text,
       type: degree,
       date_create: new Date(),
@@ -107,10 +113,27 @@ export default function AddTask() {
         {tasks.length != 0
           ? tasks.map((task) => (
               <div
-                key={task.date_create.toISOString()}
+                key={task.id}
                 className="relative flex flex-col justify-between border border-stone-400 p-4 rounded-lg shadow-lg shadow-stone-400 focus:shadow-md min-h-[400px] max-h-[400px] max-w-[400px]"
               >
-                <p className="w-full h-4/5 overflow-hidden">{task.content}</p>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  className="stroke-red-600 absolute top-2 right-2 cursor-pointer"
+                  onClick={() => removeTask(task.id)}
+                >
+                  <path d="M18 6 6 18"></path>
+                  <path d="m6 6 12 12"></path>
+                </svg>
+                <p className="w-full h-4/5 overflow-hidden pt-2">
+                  {task.content}
+                </p>
                 <div className="flex justify-between items-center bg-white">
                   <ChipsTask taskType={task.type} />
                   <p className="border border-zinc-400 px-4 py-2 rounded-2xl text-zinc-400">
