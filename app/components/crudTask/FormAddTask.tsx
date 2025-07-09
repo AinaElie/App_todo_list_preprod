@@ -24,7 +24,7 @@ export default function FormAddTask() {
   return (
     <form className="w-1/4 h-2/3 flex flex-col py-5" onSubmit={handleSubmit}>
       <textarea
-        className="min-h-[300px] min-w-[300px] resize-none rounded-lg py-4 px-4 border border-stone-400"
+        className="min-h-[300px] min-w-[300px] resize-none rounded-lg py-4 px-4 border border-stone-400 text-left"
         placeholder="Add text"
         value={text}
         onChange={(e) => setText(e.target.value)}
