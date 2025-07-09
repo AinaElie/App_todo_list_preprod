@@ -1,4 +1,4 @@
-import { TaskType } from "./AddTask";
+import { TaskType } from "./crudTask/task";
 
 export default function ChipsTask({ taskType }: { taskType: TaskType }) {
   if (taskType == TaskType.Low) {
