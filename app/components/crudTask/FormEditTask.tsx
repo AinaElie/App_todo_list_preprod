@@ -2,7 +2,14 @@
 
 import { Dispatch, SetStateAction, useState } from "react";
 import { Task, TaskType, useTaskStore } from "./task";
-import { Dialog, DialogBackdrop } from "@headlessui/react";
+import {
+  Dialog,
+  DialogBackdrop,
+  Listbox,
+  ListboxButton,
+  ListboxOption,
+  ListboxOptions,
+} from "@headlessui/react";
 
 interface EditFormProps {
   task: Task;
@@ -24,7 +31,7 @@ export default function FormEditTask({ task, open, setOpen }: EditFormProps) {
       date_create: task.date_create,
     };
     updatedTask(newTask);
-    setOpen(false)
+    setOpen(false);
   };
 
   return (
@@ -54,38 +61,77 @@ export default function FormEditTask({ task, open, setOpen }: EditFormProps) {
             <path d="m6 6 12 12"></path>
           </svg>
           <textarea
-            className="min-h-[300px] min-w-[300px] resize-none rounded-lg py-4 px-4 mt-4 border border-stone-400"
+            className="min-h-[300px] min-w-[300px] resize-none rounded-lg py-4 px-4 mt-4 border border-stone-400 font-FiraSans"
             placeholder="Add text"
             value={text}
             onChange={(e) => setText(e.target.value)}
             required
           />
           <div className="my-2 flex justify-end items-center pr-4">
-            <div className="relative mr-4">
-              <select
-                className="w-full bg-transparent placeholder:text-black text-black text-sm rounded-lg pl-3 pr-12 py-4 transition duration-300 ease focus:outline-none focus:border-black hover:border-black shadow-sm shadow-stone-400 focus:shadow-md appearance-none cursor-pointer"
-                value={degree}
-                onChange={(e) => setDegree(e.target.value as TaskType)}
-              >
-                <option value={TaskType.High}>High</option>
-                <option value={TaskType.Medium}>Medium</option>
-                <option value={TaskType.Low}>Low</option>
-              </select>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="h-5 w-5 ml-1 absolute top-4 right-2.5 stroke-black"
-              >
-                <path d="m7 15 5 5 5-5"></path>
-                <path d="m7 9 5-5 5 5"></path>
-              </svg>
-            </div>
+            <Listbox value={degree} onChange={setDegree}>
+              <div className="relative mr-4 w-1/4">
+                <ListboxButton
+                  className={`grid w-full cursor-pointer grid-cols-1 rounded-md bg-white py-3 pr-2 pl-3 text-left outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 ${
+                    degree == TaskType.Low
+                      ? "focus:outline-green-700 outline-green-700 text-green-700"
+                      : ""
+                  } ${
+                    degree == TaskType.Medium
+                      ? "focus:outline-yellow-500 outline-yellow-500 text-yellow-500"
+                      : ""
+                  } ${
+                    degree == TaskType.High
+                      ? "focus:outline-red-700 outline-red-700 text-red-700"
+                      : ""
+                  }`}
+                >
+                  <span className="col-start-1 row-start-1 flex items-center gap-3 pr-6">
+                    <span className="block truncate">{degree}</span>
+                  </span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    className={`${
+                      degree == TaskType.Low ? "stroke-green-700" : ""
+                    } ${degree == TaskType.Medium ? "stroke-yellow-500" : ""} ${
+                      degree == TaskType.High ? "stroke-red-700" : ""
+                    } col-start-1 row-start-1 size-5 self-center justify-self-end`}
+                  >
+                    <path d="m7 15 5 5 5-5"></path>
+                    <path d="m7 9 5-5 5 5"></path>
+                  </svg>
+                </ListboxButton>
+                <ListboxOptions
+                  transition
+                  className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm"
+                >
+                  <ListboxOption
+                    value={TaskType.Low}
+                    className="group relative cursor-pointer py-3 mx-1 rounded-md pr-9 pl-3 text-white-900 select-none data-focus:bg-green-700 data-focus:text-white data-focus:outline-hidden"
+                  >
+                    {TaskType.Low}
+                  </ListboxOption>
+                  <ListboxOption
+                    value={TaskType.Medium}
+                    className="group relative cursor-pointer py-3 mx-1 rounded-md pr-9 pl-3 text-white-900 select-none data-focus:bg-yellow-500 data-focus:text-white data-focus:outline-hidden"
+                  >
+                    {TaskType.Medium}
+                  </ListboxOption>
+                  <ListboxOption
+                    value={TaskType.High}
+                    className="group relative cursor-pointer py-3 mx-1 rounded-md pr-9 pl-3 text-white-900 select-none data-focus:bg-red-700 data-focus:text-white data-focus:outline-hidden"
+                  >
+                    {TaskType.High}
+                  </ListboxOption>
+                </ListboxOptions>
+              </div>
+            </Listbox>
             <button
               type="submit"
               className="group border flex border-black p-3 px-5 rounded-lg bg-black hover:bg-white transition-all cursor-pointer"

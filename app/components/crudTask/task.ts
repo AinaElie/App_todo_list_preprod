@@ -6,6 +6,8 @@ export enum TaskType {
   Low = "Low",
 }
 
+export const taskType = [TaskType.High, TaskType.Medium, TaskType.Low];
+
 export interface Task {
   id: string;
   content: string;
