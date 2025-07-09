@@ -43,7 +43,7 @@ export default function CardTask({ task }: { task: Task }) {
           <path d="m6 6 12 12"></path>
         </svg>
       </div>
-      <p className="w-full h-4/5 overflow-hidden pt-8 px-3 font-FireSans font-medium ">{task.content}</p>
+      <p className="w-full h-4/5 overflow-hidden pt-8 px-3 font-FiraSans font-medium ">{task.content}</p>
       <div className="flex justify-between items-center bg-white">
         <ChipsTask taskType={task.type} />
         <p className="border border-zinc-400 px-4 py-2 rounded-2xl text-zinc-400">
