@@ -17,8 +17,6 @@ export default function NavBarScreen({
     await signOut({ callbackUrl: "/login" });
   }
 
-  console.log(data);
-
   return (
     <nav className="w-11/12 z-10 ml-14 flex justify-between items-center top-2 fixed shadow-lg shadow-stone-400 py-2 rounded-lg ring-1 ring-black/5 bg-white">
       <div className="flex justify-center items-center pl-4">
