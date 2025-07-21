@@ -62,14 +62,13 @@ model VerificationToken {
 
 model Task {
   id          String        @id @default(cuid())
-  description String?
-  priority    TaskPriority  @default(MEDIUM)
+  content String?
+  type    TaskPriority  @default(LOW)
 
   userId      String
   user        User          @relation(fields: [userId], references: [id])
 
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
+  date_create   DateTime      @default(now())
 }
 
 enum TaskPriority {
