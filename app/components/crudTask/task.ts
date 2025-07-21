@@ -1,17 +1,17 @@
 import { create } from "zustand";
 
-export enum TaskType {
+export enum TaskPriority {
   High = "High",
   Medium = "Medium",
   Low = "Low",
 }
 
-export const taskType = [TaskType.High, TaskType.Medium, TaskType.Low];
+export const taskPriority = [TaskPriority.High, TaskPriority.Medium, TaskPriority.Low];
 
 export interface Task {
   id: string;
   content: string;
-  type: TaskType;
+  type: TaskPriority;
   date_create: Date;
 }
 

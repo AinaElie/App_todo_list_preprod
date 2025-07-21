@@ -1,7 +1,7 @@
-import { TaskType } from "./crudTask/task";
+import { TaskPriority } from "./crudTask/task";
 
-export default function ChipsTask({ taskType }: { taskType: TaskType }) {
-  if (taskType == TaskType.Low) {
+export default function ChipsTask({ taskType }: { taskType: TaskPriority }) {
+  if (taskType == TaskPriority.Low) {
     return (
       <div className="py-3 px-3 border w-1/4 flex justify-center items-center my-4 bg-green-700 text-white rounded-xl">
         <svg
@@ -21,7 +21,7 @@ export default function ChipsTask({ taskType }: { taskType: TaskType }) {
       </div>
     );
   }
-  else if (taskType == TaskType.Medium) {
+  else if (taskType == TaskPriority.Medium) {
        return (
       <div className="py-3 px-3 border w-1/3 flex justify-center items-center my-4 bg-yellow-500 text-white rounded-xl">
         <svg
@@ -41,7 +41,7 @@ export default function ChipsTask({ taskType }: { taskType: TaskType }) {
       </div>
     );
   }
-  else if (taskType == TaskType.High) {
+  else if (taskType == TaskPriority.High) {
        return (
       <div className="py-3 px-3 border w-1/4 flex justify-center items-center my-4 bg-red-700 text-white rounded-xl">
         <svg

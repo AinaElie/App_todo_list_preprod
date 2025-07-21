@@ -1,7 +1,7 @@
 "use client";
 
 import { Dispatch, SetStateAction, useState } from "react";
-import { Task, TaskType, useTaskStore } from "./task";
+import { Task, TaskPriority, useTaskStore } from "./task";
 import {
   Dialog,
   DialogBackdrop,
@@ -72,15 +72,15 @@ export default function FormEditTask({ task, open, setOpen }: EditFormProps) {
               <div className="relative mr-4 w-1/4">
                 <ListboxButton
                   className={`grid w-full cursor-pointer grid-cols-1 rounded-md bg-white py-3 pr-2 pl-3 text-left outline-1 -outline-offset-1 focus:outline-2 focus:-outline-offset-2 ${
-                    degree == TaskType.Low
+                    degree == TaskPriority.Low
                       ? "focus:outline-green-700 outline-green-700 text-green-700"
                       : ""
                   } ${
-                    degree == TaskType.Medium
+                    degree == TaskPriority.Medium
                       ? "focus:outline-yellow-500 outline-yellow-500 text-yellow-500"
                       : ""
                   } ${
-                    degree == TaskType.High
+                    degree == TaskPriority.High
                       ? "focus:outline-red-700 outline-red-700 text-red-700"
                       : ""
                   }`}
@@ -98,9 +98,11 @@ export default function FormEditTask({ task, open, setOpen }: EditFormProps) {
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     className={`${
-                      degree == TaskType.Low ? "stroke-green-700" : ""
-                    } ${degree == TaskType.Medium ? "stroke-yellow-500" : ""} ${
-                      degree == TaskType.High ? "stroke-red-700" : ""
+                      degree == TaskPriority.Low ? "stroke-green-700" : ""
+                    } ${
+                      degree == TaskPriority.Medium ? "stroke-yellow-500" : ""
+                    } ${
+                      degree == TaskPriority.High ? "stroke-red-700" : ""
                     } col-start-1 row-start-1 size-5 self-center justify-self-end`}
                   >
                     <path d="m7 15 5 5 5-5"></path>
@@ -112,22 +114,22 @@ export default function FormEditTask({ task, open, setOpen }: EditFormProps) {
                   className="absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 sm:text-sm"
                 >
                   <ListboxOption
-                    value={TaskType.Low}
+                    value={TaskPriority.Low}
                     className="group relative cursor-pointer py-3 mx-1 rounded-md pr-9 pl-3 text-white-900 select-none data-focus:bg-green-700 data-focus:text-white data-focus:outline-hidden"
                   >
-                    {TaskType.Low}
+                    {TaskPriority.Low}
                   </ListboxOption>
                   <ListboxOption
-                    value={TaskType.Medium}
+                    value={TaskPriority.Medium}
                     className="group relative cursor-pointer py-3 mx-1 rounded-md pr-9 pl-3 text-white-900 select-none data-focus:bg-yellow-500 data-focus:text-white data-focus:outline-hidden"
                   >
-                    {TaskType.Medium}
+                    {TaskPriority.Medium}
                   </ListboxOption>
                   <ListboxOption
-                    value={TaskType.High}
+                    value={TaskPriority.High}
                     className="group relative cursor-pointer py-3 mx-1 rounded-md pr-9 pl-3 text-white-900 select-none data-focus:bg-red-700 data-focus:text-white data-focus:outline-hidden"
                   >
-                    {TaskType.High}
+                    {TaskPriority.High}
                   </ListboxOption>
                 </ListboxOptions>
               </div>
