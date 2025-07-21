@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     return new NextResponse(
       JSON.stringify({
-        error: "Internal server error",
+        message: "Internal server error",
         details: error instanceof Error ? error.message : String(error),
       }),
       { status: 500 }

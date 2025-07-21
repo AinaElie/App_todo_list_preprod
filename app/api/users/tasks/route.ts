@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
 
     const body: Task[] = await request.json();
 
-    if (!body) {
+    if (body.length == 0) {
       return NextResponse.json({ message: "Not task added" }, { status: 404 });
     }
 
@@ -49,27 +49,27 @@ export async function POST(request: NextRequest) {
     for (const task of body) {
       const idTask = "TSK" + randomUUID().split("-")[0].padStart(4, "0");
 
-      const savedTask = await prisma.task.create({
-        data: {
-          id: idTask,
-          content: task.content,
-          type: task.type,
-          date_create: task.date_create,
-          userId: query,
-        },
+      createdTask.push({
+        id: idTask,
+        content: task.content,
+        type: task.type,
+        date_create: task.date_create,
+        userId: query,
       });
-
-      createdTask.push(savedTask);
     }
 
+    const result = await prisma.task.createMany({
+      data: createdTask
+    })
+
     return NextResponse.json(
-      { message: "Tasks created successfully", tasks: createdTask },
+      { message: "Tasks created successfully", tasks: result },
       { status: 201 }
     );
   } catch (error) {
     return new NextResponse(
       JSON.stringify({
-        error: "Internal server error",
+        message: "Internal server error",
         details: error instanceof Error ? error.message : String(error),
       }),
       { status: 500 }
