@@ -22,12 +22,12 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ data: user }, { status: 200 });
   } catch (error) {
-        return new NextResponse(
-            JSON.stringify({ 
-                error: "Internal server error",
-                details: error instanceof Error ? error.message : String(error)
-            }),
-            { status: 500 }
-        );
-    }
+    return new NextResponse(
+      JSON.stringify({
+        error: "Internal server error",
+        details: error instanceof Error ? error.message : String(error),
+      }),
+      { status: 500 }
+    );
+  }
 }
