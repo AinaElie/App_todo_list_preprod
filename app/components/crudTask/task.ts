@@ -1,9 +1,9 @@
 import { create } from "zustand";
 
 export enum TaskPriority {
-  High = "High",
-  Medium = "Medium",
-  Low = "Low",
+  High = "HIGH",
+  Medium = "MEDIUM",
+  Low = "LOW",
 }
 
 export const taskPriority = [TaskPriority.High, TaskPriority.Medium, TaskPriority.Low];
