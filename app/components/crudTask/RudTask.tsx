@@ -4,7 +4,7 @@ import CardTask from "./CardTask";
 import { Task } from "./task";
 
 export default async function RudTask({ tasks }: { tasks: Task[] }) {
-
+  
   return (
     <div className="ml-8 py-4 px-8 h-full w-full flex flex-wrap gap-8 relative">
       <button className="group absolute -top-9 right-4 border border-indigo-700 py-2 px-4 cursor-pointer flex bg-indigo-700 hover:bg-white rounded-lg transition-all">

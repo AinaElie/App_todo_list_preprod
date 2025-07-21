@@ -52,9 +52,9 @@ export async function POST(request: NextRequest) {
       const savedTask = await prisma.task.create({
         data: {
           id: idTask,
-          description: task.description,
-          priority: task.priority,
-          createdAt: task.createdAt,
+          content: task.content,
+          type: task.type,
+          date_create: task.date_create,
           userId: query,
         },
       });
