@@ -13,8 +13,7 @@ export default function RudTask({ tasks }: { tasks: Task[] }) {
   async function create() {
     setLoading(true);
     try {
-      const apiGetUser = process.env.NEXT_PUBLIC_GET_USER_BY_EMAIL;
-      const resUser = await fetch(`${apiGetUser}`);
+      const resUser = await fetch("/api/users");
 
       if (resUser.status != 200) {
         const data = await resUser.json();
@@ -23,8 +22,7 @@ export default function RudTask({ tasks }: { tasks: Task[] }) {
       }
       const dataUser = await resUser.json();
 
-      const apiPostTask = process.env.NEXT_PUBLIC_POST_TASK_WITH_USERID;
-      const req = await fetch(`${apiPostTask}=${dataUser.data.id}`, {
+      const req = await fetch(`/api/users/tasks?withId=${dataUser.data.id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
