@@ -18,7 +18,7 @@ export async function GET() {
   } catch (error) {
     return new NextResponse(
       JSON.stringify({
-        error: "Internal server error",
+        message: "Internal server error",
         details: error instanceof Error ? error.message : String(error),
       }),
       { status: 500 }
@@ -58,12 +58,12 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    const result = await prisma.task.createMany({
-      data: createdTask
-    })
+    await prisma.task.createMany({
+      data: createdTask,
+    });
 
     return NextResponse.json(
-      { message: "Tasks created successfully", tasks: result },
+      { message: "Tasks created successfully" },
       { status: 201 }
     );
   } catch (error) {
