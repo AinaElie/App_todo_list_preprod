@@ -27,7 +27,7 @@ export default function StatusLog({
     );
   } else if (status == 404) {
     return (
-      <div className="w-2/5 py-2 px-4 shadow-lg shadow-stone-200 mx-4 rounded-lg text-center text-sm text-red-600 border border-text-red-600 flex justify-around items-center">
+      <div className="w-2/4 py-2 px-4 shadow-lg shadow-stone-200 mx-4 rounded-lg text-center text-sm text-red-600 border border-text-red-600 flex justify-around items-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="19"
@@ -43,7 +43,7 @@ export default function StatusLog({
           <path d="m15 9-6 6"></path>
           <path d="m9 9 6 6"></path>
         </svg>
-        <p>Not task added</p>
+        <p>{message || "Not tasks added"}</p>
       </div>
     );
   } else {

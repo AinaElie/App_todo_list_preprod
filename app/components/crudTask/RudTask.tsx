@@ -13,7 +13,8 @@ export default function RudTask({ tasks }: { tasks: Task[] }) {
   async function create() {
     setLoading(true);
     try {
-      const resUser = await fetch("/api/users");
+      const apiGetUser = process.env.NEXT_PUBLIC_GET_USER_BY_EMAIL;
+      const resUser = await fetch(`${apiGetUser}`);
 
       if (resUser.status != 200) {
         const data = await resUser.json();
@@ -22,7 +23,8 @@ export default function RudTask({ tasks }: { tasks: Task[] }) {
       }
       const dataUser = await resUser.json();
 
-      const req = await fetch(`/api/users/tasks?withId=${dataUser.data.id}`, {
+      const apiPostTask = process.env.NEXT_PUBLIC_POST_TASK_WITH_USERID;
+      const req = await fetch(`${apiPostTask}=${dataUser.data.id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -41,7 +43,7 @@ export default function RudTask({ tasks }: { tasks: Task[] }) {
         console.error("Error", res.details);
       }
     } catch (error) {
-      setLog(`${error}`);
+      setLog("Error servor");
       setStatus(500);
       console.error("Error servor :", error);
     } finally {
