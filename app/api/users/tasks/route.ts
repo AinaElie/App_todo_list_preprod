@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { Task } from "@prisma/client";
 import { randomUUID } from "crypto";
+import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
@@ -28,14 +29,17 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
-    const searchParams = request.nextUrl.searchParams;
-    const query = searchParams.get("withId");
+    const cookieStore = await cookies();
+    const email = cookieStore.get("emailUser");
 
-    if (!query) {
-      return NextResponse.json(
-        { message: "User ID not found" },
-        { status: 404 }
-      );
+    const user = await prisma.user.findUnique({
+      where: {
+        email: email?.value,
+      },
+    });
+
+    if (!user) {
+      return NextResponse.json({ message: "User not found, please connected us" }, { status: 404 });
     }
 
     const body: Task[] = await request.json();
@@ -54,7 +58,7 @@ export async function POST(request: NextRequest) {
         content: task.content,
         type: task.type,
         date_create: task.date_create,
-        userId: query,
+        userId: user.id,
       });
     }
 
